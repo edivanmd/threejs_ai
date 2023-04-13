@@ -6,8 +6,8 @@ import { fadeAnimation, slideAnimation } from '../config/motion';
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
 import state from '../store';
 import { reader, downloadCanvasToImage } from '../config/helpers';
-// import { download } from '../assets';
-// import config from '../config/config';
+import { download } from '../assets';
+import config from '../config/config';
 
 const Customizer = () => {
   const snap = useSnapshot(state);
@@ -129,6 +129,12 @@ const Customizer = () => {
             />
           </motion.div>
 
+          <motion.div className="absolute top-1/2 right-0 z-10" {...slideAnimation('right')} >
+            <button className='download-btn' onClick={downloadCanvasToImage}>
+              <img src={download} alt='download_image' className='w-3/5 h-3/5 object-contain' />
+            </button>
+          </motion.div>
+
           <motion.div
             className='filtertabs-container'
             {...slideAnimation("up")}
@@ -143,6 +149,7 @@ const Customizer = () => {
               />
             ))}
           </motion.div>
+
         </>
       )}
     </AnimatePresence>
